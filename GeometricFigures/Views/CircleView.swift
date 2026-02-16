@@ -2,7 +2,7 @@
 //  CircleView.swift
 //  GeometricFigures
 //
-//  Created by Russell Gordon on 2024-09-30.
+//  Created by Russell Gordon on 2024-10-02.
 //
 
 import SwiftUI
@@ -10,51 +10,90 @@ import SwiftUI
 struct CircleView: View {
     
     // MARK: Stored properties
-    
-    // Describes circle the user is controlling through the UI
-    @State var currentCircle = Circle(radius: 1.0)
+    @State var currentCircle = Circle(radius: 50)
     
     // MARK: Computed properties
     var body: some View {
-        VStack(spacing: 10) {
-            Image("Circle")
+        VStack {
+            
+            // Add an image
+            Image("CircleDiagram")
                 .resizable()
                 .scaledToFit()
-                .padding()
             
-            Text("Radius")
-                .font(.title3)
-                .bold()
-            
+            // Label (describe what the slider is for)
             HStack {
-                Text("1")
-                Slider(
-                    value: $currentCircle.radius,
-                    in: 1...100,
-                    step: 1
-                )
-                Text("100")
+                Text("Radius")
+                    .font(.headline)
+                    .fontWeight(.bold)
+                Spacer()
             }
             
-            Text("\(currentCircle.radius.formatted())")
-                                    
-            Divider()
+            // 1. INPUT
+            // Slider control – to allow for user input
+            Slider(
+                value: $currentCircle.radius,
+                in: 1...100,
+                step: 1.0
+            )
             
-            Text("Diameter")
-                .font(.title3)
-                .bold()
-            Text("\(currentCircle.diameter.formatted()) units")
+            // 3. OUTPUT
+            // Label (show the current slider value)
+            HStack {
+                Text("\(currentCircle.radius.formatted()) units")
+                Spacer()
+            }
+                        
+            // Label (show the diameter)
+            VStack {
+                HStack {
+                    Text("Diameter")
+                        .font(.headline)
+                    Spacer()
+                }
+                .padding(.top)
+                .padding(.bottom, 5)
 
-            Text("Area")
-                .font(.title3)
-                .bold()
-            Text("\(currentCircle.area.formatted()) square units")
+                HStack {
+                    Text("\(currentCircle.diameter.formatted()) units")
+                    Spacer()
+                }
+                .padding(.bottom)
+            }
 
-            Text("Circumference")
-                .font(.title3)
-                .bold()
+            // Label (show the area)
+            VStack {
+                HStack {
+                    Text("Area")
+                        .font(.headline)
+                    Spacer()
+                }
+                .padding(.top)
+                .padding(.bottom, 5)
 
-            Text("\(currentCircle.circumference.formatted()) units")
+                HStack {
+                    Text("\(currentCircle.area.formatted()) square units")
+                    Spacer()
+                }
+                .padding(.bottom)
+            }
+
+            // Label (show the circumference)
+            VStack {
+                HStack {
+                    Text("Circumference")
+                        .font(.headline)
+                    Spacer()
+                }
+                .padding(.top)
+                .padding(.bottom, 5)
+
+                HStack {
+                    Text("\(currentCircle.circumference.formatted()) units")
+                    Spacer()
+                }
+                .padding(.bottom)
+            }
             
             Spacer()
 

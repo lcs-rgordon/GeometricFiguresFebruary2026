@@ -2,8 +2,10 @@
 //  Circle.swift
 //  GeometricFigures
 //
-//  Created by Russell Gordon on 2024-09-30.
+//  Created by Russell Gordon on 2024-10-02.
 //
+
+import Foundation
 
 // Define the protocol
 protocol Describable {
@@ -17,6 +19,7 @@ struct Circle: Describable {
     var radius: Double
     
     // MARK: Computed properties
+    // 2. PROCESS
     var diameter: Double {
         return radius * 2
     }
